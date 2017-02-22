@@ -60,9 +60,9 @@ const SoGiveNavBar = ({ page }) => {
 							<Link className="nav-item nav-link" to="/search">
 								Search
 							</Link></li>
-						<li className={page === 'campaign'? 'active' : ''}>
-							<Link className="nav-item nav-link" href="/campaign">
-								(dummy) Donate to Campaign
+						<li className={page === 'charity'? 'active' : ''}>
+							<Link className="nav-item nav-link" to="/charity">
+								(dummy) Charity
 							</Link>
 						</li>
 					</ul>

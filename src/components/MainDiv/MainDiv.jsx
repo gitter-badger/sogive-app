@@ -27,14 +27,6 @@ const MainDiv = ({ page }) => (
 	</div>
 );
 
-// only serves to set default charity...
-	// constructor() {
-	// 	super();
-	// 	const pageProps = getUrlVars();
-	// 	// FIXME
-	// 	pageProps.charityId = 'solar-aid';
-	// 	this.state = { pageProps };
-	// }
 
 /**
  * This function maps parts of the Redux central state object onto the component's props.
