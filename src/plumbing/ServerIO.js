@@ -21,13 +21,13 @@ window.ServerIO = ServerIO;
  */
 ServerIO.search = function(query) {
 	assert(_.isString(query), query);
-	return ServerIO.load('/search.json', {data: {q: query}} );
+	return ServerIO.load('/api/search.json', {data: {q: query}} );
 }
 
 
 ServerIO.getCharity = function(charityId) {
 	assMatch(charityId, String);
-    return ServerIO.load('/charity/'+charityId+'.json');
+    return ServerIO.load('/api/charity/'+charityId+'.json');
 }
 
 

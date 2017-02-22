@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import AccountMenu from '../AccountMenu';
-import { switchPage } from './SoGiveNavBar-actions';
 
 // import { Nav, NavBar, NavItem } from 'react-bootstrap';
 // https://react-bootstrap.github.io/components.html#navbars
@@ -26,7 +26,7 @@ import { switchPage } from './SoGiveNavBar-actions';
 // 			</NavBar>
 // 	);
 
-const SoGiveNavBar = ({page, handleSwitchPage}) => {
+const SoGiveNavBar = ({ page }) => {
 	console.log('NavBar', page);
 
 	return (
@@ -46,27 +46,29 @@ const SoGiveNavBar = ({page, handleSwitchPage}) => {
 						<span className="icon-bar" />
 						<span className="icon-bar" />
 					</button>
-					<a className="navbar-brand" href="#dashboard">
+					<Link className="navbar-brand" to="/">
 						<img alt="SoGive logo" style={{maxWidth:'100px',maxHeight:'50px',background:'black'}} src="img/logo.png" />
-					</a>
+					</Link>
 				</div>
 				<div id="navbar" className="navbar-collapse collapse">
 					<ul className="nav navbar-nav">
 						<li className={page === 'dashboard'? 'active' : ''}>
-							<a className="nav-item nav-link" href="#dashboard" onClick={() => handleSwitchPage('dashboard')}>
+							<Link className="nav-item nav-link" to="/dashboard">
 								My Profile
-							</a></li>
+							</Link></li>
 						<li className={page === 'search'? 'active' : ''}>
-							<a className="nav-item nav-link" href="#search" onClick={() => handleSwitchPage('search')}>
+							<Link className="nav-item nav-link" to="/search">
 								Search
-							</a></li>
+							</Link></li>
 						<li className={page === 'campaign'? 'active' : ''}>
-							<a className="nav-item nav-link" href="#campaign" onClick={() => handleSwitchPage('campaign')}>
+							<Link className="nav-item nav-link" href="/campaign">
 								(dummy) Donate to Campaign
-							</a>
+							</Link>
 						</li>
 					</ul>
-					<AccountMenu active={page === 'account'} onClick={() => handleSwitchPage('account')} />
+					<Link to="/account">
+						<AccountMenu active={page === 'account'} />
+					</Link>
 				</div>
 			</div>
 		</nav>
@@ -76,20 +78,13 @@ const SoGiveNavBar = ({page, handleSwitchPage}) => {
 
 SoGiveNavBar.propTypes = {
 	page: PropTypes.string.isRequired,
-	handleSwitchPage: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = (state, ownProps) => ({
 	...ownProps,
-	page: state.navigation.page,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-handleSwitchPage: (value) => dispatch(switchPage(value)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
 )(SoGiveNavBar);

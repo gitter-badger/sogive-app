@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { assert } from 'sjtest';
 import {Button, Form, FormGroup, FormControl, ControlLabel, Media, MediaLeft, MediaBody, MediaHeading, Well} from 'react-bootstrap';
 import {uid} from 'wwutils';
+import { Link } from 'react-router';
 
 import ServerIO from '../plumbing/ServerIO';
 import printer from '../utils/printer.js';
@@ -104,7 +105,9 @@ const SearchResult = ({ item }) => (
 				<img width={64} height={64} src={item.logo} alt={`Logo for ${item.name}`} />
 			</Media.Left>
 			<Media.Body>
-				<Media.Heading>{item.name}</Media.Heading>
+				<Link to={`/charity/${item['@id']}`}>
+					<Media.Heading>{item.name}</Media.Heading>
+				</Link>
 				<p>{item.description}</p>
 			</Media.Body>
 		</Media>
