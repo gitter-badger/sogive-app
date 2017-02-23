@@ -5,7 +5,6 @@ import { assert } from 'sjtest';
 
 // import LoginWidget from './LoginWidget.jsx';
 // import printer from '../../utils/printer.js';
-import { getUrlVars } from 'wwutils';
 
 // import {XId,yessy,uid} from '../js/util/orla-utils.js';
 // import C from '../../C.js';
@@ -17,12 +16,12 @@ import SoGiveNavBar from '../SoGiveNavBar';
 /**
 		Top-level: SoGive tabs
 */
-const MainDiv = ({ page }) => (
+const MainDiv = ({ children }) => (
 	<div>
 		<SoGiveNavBar />
 		<div className="container avoid-navbar">
 			<MessageBar />
-			{ page }
+			{ children }
 		</div>
 	</div>
 );

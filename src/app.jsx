@@ -26,12 +26,12 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}>
 			<Route path='/' component={MainDiv}>
-				<IndexRoute component={{ page: DashboardPage }} />
-				<Route path='dashboard' component={{ page: DashboardPage }} />
-				<Route path='search' component={{ page: SearchPage }} />
-				<Route path='account' component={{ page: AccountPage }} />
-				<Route path='donate' component={{ page: DonateToCampaignPage }} />
-				<Route path='charity/:charityId' component={{ page: CharityPage }} />
+				<IndexRoute component={DashboardPage} />
+				<Route path='dashboard' component={DashboardPage} />
+				<Route path='search' component={SearchPage} />
+				<Route path='account' component={AccountPage} />
+				<Route path='donate' component={DonateToCampaignPage} />
+				<Route path='charity/:charityId' component={CharityPage} />
 			</Route>
 		</Router>
 	</Provider>,
