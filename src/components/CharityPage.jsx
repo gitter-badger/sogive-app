@@ -15,6 +15,8 @@ import Misc from './Misc';
 import DonationForm from './DonationForm';
 import PageMetaInfo from './PageMetaInfo';
 
+// Data model: component state, ServerIO
+
 class CharityPage extends React.Component {
 
 	constructor(...params) {

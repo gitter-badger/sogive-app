@@ -7,6 +7,8 @@ import {uid, yessy} from 'wwutils';
 import ServerIO from '../plumbing/ServerIO';
 import Misc from './Misc.jsx';
 
+// DataModel: component holds state and calls the server directly
+
 export default class SearchPage extends React.Component {
 
 	constructor(...params) {

@@ -2,14 +2,22 @@
 
 import _ from 'lodash';
 import {isa} from '../DataClass';
+import {assert, assMatch} from 'sjtest';
+import {blockProp} from 'wwutils';
 
 const NGO = {};
 export default NGO;
 
+NGO.validate = (ngo) => {
+	assMatch(ngo['@id'], String);
+	blockProp(ngo, 'id');
+	return ngo;
+};
 
 NGO.isa = (ngo) => isa(ngo, 'NGO');
 NGO.name = (ngo) => isa(ngo, 'NGO') && ngo.name;
 NGO.description = (ngo) => isa(ngo, 'NGO') && ngo.description;
+NGO.id = (ngo) => assert(ngo['@id']);
 
 NGO.getProject = (ngo) => {
 	NGO.isa(ngo);

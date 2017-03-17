@@ -11,14 +11,19 @@ import printer from '../utils/printer';
 import NGO from '../data/charity/NGO';
 import Misc from './Misc';
 import GiftAidForm from './GiftAidForm';
+import DataStore from '../plumbing/DataStore';
 
 import { donate, updateForm, initDonationForm } from './DonationForm-actions';
 
+// Data model: Redux, migrating
 
 class DonationForm extends React.Component {
 
 	render() {
-		const { user, charity, donationForm, handleChange, initDonation, sendDonation } = this.props;
+		const {charity, handleChange, initDonation, sendDonation } = this.props;
+		const user = Login.getUser();
+		const cid = NGO.id(charity);
+		const donationForm = DataStore.get(['widget','donationForm',cid]);
 
 		// some charities dont accept donations
 		if (charity.noPublicDonations) {
@@ -254,19 +259,18 @@ const DonationList = ({donations}) => {
 	return <ul>{ddivs}</ul>;
 };
 
+FOO
 const mapStateToProps = (state, ownProps) => ({
 	...ownProps,
 	donationForm: state.donationForm[ownProps.charity['@id']],
 	user: state.login.user,
 });
 
+FOO
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	handleChange: (field, value) => dispatch(updateForm(ownProps.charity['@id'], field, value)),
 	sendDonation: (charity, donationForm, stripeResponse) => dispatch(donate(dispatch, charity, donationForm, stripeResponse)),
 	initDonation: () => dispatch(initDonationForm(ownProps.charity['@id'])),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DonationForm);
+export default DonationForm;
